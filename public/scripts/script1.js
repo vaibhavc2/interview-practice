@@ -1,4 +1,4 @@
-// Q: Whenever user clicks on the screen, create a circle at the position of the click. The circle should have a random radius between a set pixel range. If the user clicks again, a new circle should be created, and the previous one should also remain. Now, if the two circles intersect, then console.log("Intersection detected"), and also log the number of pixels covered by the intersection. At the third click, both the previous circles should be removed, and new circle should be created and so on... Repeat this process for every three clicks.
+// Q: Whenever user clicks on the screen, create a circle at the position of the click. The circle should have a random radius between a set pixel range. If the user clicks again, a new circle should be created, and the previous one should also remain. Now, if the two circles intersect, then console.log("Intersection detected"). At the third click, both the previous circles should be removed, and new circle should be created and so on... Repeat this process for every three clicks.
 
 // define radii
 let radius1 = 0;
@@ -56,9 +56,15 @@ document.addEventListener("click", (event) => {
     x2 = x;
     y2 = y;
 
+    // distance between centers of two circles
+    const distance = Math.hypot(x2 - x1, y2 - y1);
+
+    // if distance is less than or equal to the difference of the radii of the two circles, then it means the circle with smaller radius is completely inside the circle with larger radius
+    // if distance is less than the sum of the radii of the two circles and greater than the absolute difference of the radii of the two circles
+    // if the distance is equal to the sum of the radii of the two circles, then it means the circles are touching each other
     if (
-      !(x2 === x1 && y2 === y1) &&
-      Math.hypot(x2 - x1, y2 - y1) <= radius1 + radius2
+      !(distance <= Math.abs(radius1 - radius2)) &&
+      distance <= radius1 + radius2
     ) {
       console.log("Intersection detected");
     }
