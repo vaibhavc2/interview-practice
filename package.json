@@ -1,0 +1,20 @@
+{
+  "name": "interview-practice",
+  "version": "1.0.0",
+  "description": "Practice JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "type": "commonjs",
+  "keywords": [
+    "js",
+    "html",
+    "practice"
+  ],
+  "author": "vaibhav",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
